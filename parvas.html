@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 18 Parvas — Dronacharya's Training</title>
+  <meta name="description" content="An explorable timeline of all 18 Parvas of the Mahabharata, with an adaptive assessment that sends you back to the exact event you need to relearn.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Inter:wght@300;400;500;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/parvas.css">
+</head>
+<body data-page="parvas">
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand" aria-label="Dronacharya's Training — home">
+        <svg class="brand-mark"><use href="#i-bowmark"/></svg>
+        <span class="brand-text"><span>Dronacharya's</span><span class="brand-sub">Training</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="index.html#story">Story</a>
+        <a href="parvas.html" class="active">Timeline</a>
+        <a href="index.html#problem">Problem</a>
+        <a href="index.html#principles">Principles</a>
+        <a href="index.html#research">Research</a>
+        <a href="index.html#simulator">Simulation</a>
+        <a href="index.html#impact">Impact</a>
+        <a href="#" data-modal="about">About</a>
+        <a href="gurukul.html" class="btn btn-gold btn-sm nav-cta-mobile">Enter the Gurukul</a>
+      </nav>
+      <a href="gurukul.html" class="btn btn-gold btn-sm nav-cta">Enter the Gurukul <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero pv-hero" id="top">
+      <div class="sec-bg" data-parallax="0.3" style="background-image:url(assets/img/misty-path.webp);background-position:60% 70%"></div>
+      <div class="hero-shade center"></div>
+      <canvas class="embers" aria-hidden="true"></canvas>
+      <div class="container hero-content hero-center">
+        <p class="eyebrow pv-eyebrow" data-reveal>The Mahabharata</p>
+        <h1 class="hero-title big" data-reveal="fade"><span class="line">The Eighteen</span><span class="line">Parvas</span></h1>
+        <p class="hero-tag light" data-reveal style="--d:.3s">From Bhishma's vow to Yudhishthira's ascent. Walk the timeline, then test what you remember.</p>
+        <div class="btn-row pv-hero-btns" data-reveal style="--d:.45s">
+          <button class="btn btn-gold" data-quiz="start">Start Assessment <svg class="ic"><use href="#i-arrow"/></svg></button>
+          <a href="#phases" class="btn btn-outline">Explore the Timeline</a>
+        </div>
+        <div class="pv-stats" data-reveal style="--d:.6s">
+          <div><strong>18</strong><span>Parvas</span></div>
+          <div><strong id="statEvents">0</strong><span>Events</span></div>
+          <div><strong>3</strong><span>Phases</span></div>
+          <div><strong>18</strong><span>Questions</span></div>
+        </div>
+      </div>
+      <a href="#phases" class="scroll-cue labeled" aria-label="Scroll to the timeline"><svg><use href="#i-mouse"/></svg><span>Scroll to Begin</span></a>
+    </section>
+
+    <!-- ============ PHASES OVERVIEW ============ -->
+    <section class="section pv-phases" id="phases">
+      <div class="container">
+        <h2 class="title center" data-reveal>The Complete Timeline at a Glance</h2>
+        <p class="center pv-lead" data-reveal style="--d:.1s">Three great movements, eighteen books, and every major incident in between. Choose a phase to jump in.</p>
+        <div class="phase-cards" id="phaseCards"></div>
+      </div>
+    </section>
+
+    <!-- ============ PARVA RAIL (sticky) ============ -->
+    <nav class="parva-rail" id="parvaRail" aria-label="Jump to a Parva">
+      <div class="rail-track" id="railTrack"></div>
+      <div class="rail-progress"><i id="railFill"></i></div>
+    </nav>
+
+    <!-- ============ TIMELINE ============ -->
+    <div class="timeline" id="timeline"></div>
+
+    <!-- ============ QUICK REFERENCE ============ -->
+    <section class="section pv-table-sec" id="reference">
+      <div class="container">
+        <h2 class="title center" data-reveal>All 18 Parvas: Quick Reference</h2>
+        <p class="center pv-lead" data-reveal style="--d:.1s">Select any row to jump back to that Parva in the timeline.</p>
+        <div class="pv-table glass" data-reveal style="--d:.15s">
+          <table>
+            <thead><tr><th>No.</th><th>Parva</th><th>Main events</th></tr></thead>
+            <tbody id="refBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ASSESSMENT ============ -->
+    <section class="section pv-assess" id="assessment">
+      <div class="sec-bg" data-parallax="0.18" style="background-image:url(assets/img/archer-aiming.webp);background-position:60% 60%"></div>
+      <div class="shade-left"></div>
+      <div class="container pv-assess-grid">
+        <div>
+          <h2 class="title" data-reveal="left">The Parva Assessment</h2>
+          <p data-reveal style="--d:.1s">Eighteen questions, one from each Parva, in the order of the story. Answer correctly on the first try for full marks. Get one wrong and Dronacharya sends you back to the exact moment in the timeline to learn it again. Then you return to the same question.</p>
+          <ul class="score-rules" data-reveal style="--d:.2s">
+            <li><b>10</b> points: correct on the first try</li>
+            <li><b>5</b> points: correct after one review</li>
+            <li><b>2</b> points: correct after two or more reviews</li>
+            <li><b>+3</b> streak bonus for every 3 first-try answers in a row</li>
+          </ul>
+        </div>
+        <div class="assess-card glass" data-reveal="right" style="--d:.2s">
+          <p class="eyebrow">Your record</p>
+          <div class="assess-best">
+            <div><span>Best score</span><strong id="bestScore">—</strong></div>
+            <div><span>Best rank</span><strong id="bestRank">—</strong></div>
+            <div><span>Attempts</span><strong id="attemptCount">0</strong></div>
+          </div>
+          <button class="btn btn-gold btn-block" data-quiz="start" id="assessStartBtn">Start Assessment <svg class="ic"><use href="#i-arrow"/></svg></button>
+          <p class="assess-note" id="assessNote">Takes about 5 to 8 minutes. Your best score is saved on this device.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CREDITS ============ -->
+    <section class="pv-credits" id="credits">
+      <div class="container">
+        <details>
+          <summary>Image sources</summary>
+          <p>The Parva illustrations were gathered from the sources below. Check each image's licence before publishing this site publicly.</p>
+          <ul id="creditList"></ul>
+        </details>
+        <p class="pv-disclaimer">The incident lists are a structured overview of the major narrative events, not an exhaustive catalogue of every episode in the Sanskrit epic.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="brand"><svg class="brand-mark"><use href="#i-bowmark"/></svg><span class="brand-text"><span>Dronacharya's</span><span class="brand-sub">Training</span></span></a>
+        <p>Ancient wisdom. Individual learning. A brighter future.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="index.html">Home</a><a href="index.html#story">Story</a><a href="parvas.html">Timeline</a><a href="index.html#research">Research</a><a href="index.html#simulator">Simulation</a><a href="gurukul.html">Gurukul</a><a href="#" data-modal="about">About</a>
+      </nav>
+      <div class="socials">
+        <button data-share aria-label="Share this page"><svg><use href="#i-share"/></svg></button>
+        <button data-modal="contact" aria-label="Contact"><svg><use href="#i-mail"/></svg></button>
+        <a href="#" data-quiz="start" aria-label="Start assessment"><svg><use href="#i-play"/></svg></a>
+      </div>
+    </div>
+    <p class="copyright">© <span id="year"></span> Dronacharya's Training. A learning project inspired by the Mahabharata.</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/arena.js"></script>
+  <script src="js/parvas-data.js"></script>
+  <script src="js/parvas.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

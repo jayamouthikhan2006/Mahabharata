@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dronacharya's Training — Personalized Skill Development</title>
+  <meta name="description" content="Ancient wisdom, individual learning. A personalized skill-development simulator inspired by Dronacharya's gurukul.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Inter:wght@300;400;500;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body data-page="home">
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="brand" aria-label="Dronacharya's Training — home">
+        <span class="brand-text"><span>Dronacharya's</span><span class="brand-sub">Training</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="#home" data-spy="home">Home</a>
+        <a href="#story" data-spy="story">Story</a>
+        <a href="#problem" data-spy="problem">Problem</a>
+        <a href="#principles" data-spy="principles">Principles</a>
+        <a href="#research" data-spy="research">Research</a>
+        <a href="#simulator" data-spy="simulator">Simulation</a>
+        <a href="#impact" data-spy="impact">Impact</a>
+        <a href="parvas.html">Timeline</a>
+        <a href="#" data-modal="about">About</a>
+        <a href="gurukul.html" class="btn btn-gold btn-sm nav-cta-mobile">Enter the Gurukul</a>
+      </nav>
+      <a href="gurukul.html" class="btn btn-gold btn-sm nav-cta">Enter the Gurukul</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1 · HERO -->
+    <section class="bn bn-hero" id="home">
+      <div class="bn-bg" data-parallax="0.08" style="background-image:url(assets/img/home/hero.webp)"></div>
+      <div class="bn-shade hero-glow"></div>
+      <canvas class="embers" aria-hidden="true"></canvas>
+      <div class="bn-inner bn-right">
+        <div class="bn-copy center-copy">
+          <h1 class="hero-title" data-reveal="fade"><span class="line">Dronacharya's</span><span class="line">Training</span></h1>
+          <p class="hero-sub" data-reveal style="--d:.25s">Personalized Skill Development</p>
+          <p class="hero-tag" data-reveal style="--d:.4s">Ancient wisdom. Individual learning. A smarter tomorrow.</p>
+          <div class="btn-row" data-reveal style="--d:.55s">
+            <a href="gurukul.html" class="btn btn-gold">Enter the Gurukul <svg class="ic"><use href="#i-arrow"/></svg></a>
+            <a href="#story" class="btn btn-outline">Explore the Story</a>
+          </div>
+        </div>
+      </div>
+      <a href="#gurukul-world" class="scroll-cue" aria-label="Scroll down"><svg><use href="#i-mouse"/></svg></a>
+    </section>
+
+    <!-- 2 · WORLD OF THE GURUKUL -->
+    <section class="bn bn-world" id="gurukul-world">
+      <div class="bn-bg" data-parallax="0.08" style="background-image:url(assets/img/home/world.webp)"></div>
+      <div class="bn-shade left"></div>
+      <div class="bn-inner">
+        <div class="bn-copy">
+          <h2 class="title" data-reveal="left">The World of<br>the Gurukul</h2>
+          <p data-reveal style="--d:.12s">A place where discipline, practice and purpose shaped extraordinary individuals. Step into the ancient training grounds and experience the environment that built warriors, thinkers and leaders.</p>
+          <a href="gurukul.html" class="btn btn-outline btn-sm" data-reveal style="--d:.24s">Explore the Gurukul</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · STORY OF DRONACHARYA -->
+    <section class="bn bn-story" id="story">
+      <div class="bn-bg" data-parallax="0.08" style="background-image:url(assets/img/home/story.webp)"></div>
+      <div class="bn-shade-story"></div>
+      <div class="bn-inner story-row">
+        <div class="bn-copy">
+          <h2 class="title" data-reveal>The Story of<br>Dronacharya</h2>
+          <p data-reveal style="--d:.12s">Dronacharya, the legendary teacher of the Kuru princes, trained each student with discipline, observation and deep understanding of their individual abilities.</p>
+          <button class="btn btn-outline btn-sm" data-modal="story" data-reveal style="--d:.24s">Know the Story <svg class="ic"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="char-row">
+          <button class="char-card" data-modal="char-drona" data-reveal="zoom" style="--d:.1s"><img class="char-img" src="assets/img/home/card-drona.jpg" alt=""><span class="char-name">Dronacharya</span></button>
+          <button class="char-card featured" data-modal="char-arjuna" data-reveal="zoom" style="--d:.2s"><img class="char-img" src="assets/img/home/card-arjuna.jpg" alt=""><span class="char-name">Arjuna</span></button>
+          <button class="char-card" data-modal="char-bhima" data-reveal="zoom" style="--d:.3s"><img class="char-img" src="assets/img/home/card-bhima.jpg" alt=""><span class="char-name">Bhima</span></button>
+          <button class="char-card" data-modal="char-duryodhana" data-reveal="zoom" style="--d:.4s"><img class="char-img" src="assets/img/home/card-duryodhana.jpg" alt=""><span class="char-name">Duryodhana</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · BIRD'S-EYE TEST -->
+    <section class="bn bn-birds" id="birds-eye">
+      <div class="bn-bg" data-parallax="0.08" style="background-image:url(assets/img/home/birds.webp)"></div>
+      <div class="bn-shade left soft"></div>
+      <div class="bn-inner birds-row">
+        <div class="bn-copy">
+          <h2 class="title" data-reveal="left">The Bird's-Eye Test</h2>
+          <p data-reveal style="--d:.12s">Dronacharya asked each prince what they saw. While others saw the tree, leaves and surroundings, Arjuna saw only the bird's eye. A timeless lesson in focus, clarity and goal-driven practice.</p>
+          <button class="btn btn-outline btn-sm" data-arena="focus" data-reveal style="--d:.24s">Experience the Test <svg class="ic"><use href="#i-arrow"/></svg></button>
+        </div>
+        <form class="quiz-card glass" id="birdQuiz" data-reveal="right" style="--d:.2s">
+          <h4>What do you see?</h4>
+          <label class="opt"><input type="radio" name="see" value="tree"><span class="dot"></span>The tree</label>
+          <label class="opt"><input type="radio" name="see" value="leaves"><span class="dot"></span>The leaves</label>
+          <label class="opt"><input type="radio" name="see" value="bird"><span class="dot"></span>The bird</label>
+          <label class="opt"><input type="radio" name="see" value="eye"><span class="dot"></span>Only the bird's eye</label>
+          <button type="submit" class="btn btn-gold btn-sm btn-block">Reveal Answer</button>
+          <div class="quiz-result" id="quizResult" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 5 · MODERN PROBLEM -->
+    <section class="bn bn-problem" id="problem">
+      <div class="bn-bg" data-parallax="0.08" style="background-image:url(assets/img/home/problem.webp)"></div>
+      <div class="bn-inner bn-right">
+        <div class="bn-copy wide">
+          <h2 class="title" data-reveal>The Modern Problem</h2>
+          <p class="eyebrow" data-reveal style="--d:.08s">One-size-fits-all learning doesn't work</p>
+          <p data-reveal style="--d:.16s">Every learner has different strengths, weaknesses, learning speed and areas of interest. Traditional learning often gives the same instruction to everyone, leading to missed potential.</p>
+          <div class="mini-cards">
+            <button class="mini-card" data-modal="problem-abilities" data-reveal style="--d:.1s"><svg><use href="#i-puzzle"/></svg><span>Different<br>abilities</span></button>
+            <button class="mini-card" data-modal="problem-personal" data-reveal style="--d:.2s"><svg><use href="#i-user-x"/></svg><span>Limited<br>personalization</span></button>
+            <button class="mini-card" data-modal="problem-feedback" data-reveal style="--d:.3s"><svg><use href="#i-clock"/></svg><span>Delayed<br>feedback</span></button>
+            <button class="mini-card" data-modal="problem-difficulty" data-reveal style="--d:.4s"><svg><use href="#i-gauge"/></svg><span>Difficulty<br>measuring mastery</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · ANCIENT WISDOM, MODERN LEARNING -->
+    <section class="bn bn-principles" id="principles">
+      <div class="bn-bg" data-parallax="0.08" style="background-image:url(assets/img/home/principles.webp)"></div>
+      <div class="bn-shade left soft"></div>
+      <div class="bn-inner">
+        <div class="bn-copy wide">
+          <h2 class="title" data-reveal="left">Ancient Wisdom,<br>Modern Learning</h2>
+          <p data-reveal style="--d:.12s">Principles from the Mahabharata and Indian Knowledge Systems inspire a modern approach to personalized skill development.</p>
+          <div class="principle-row">
+            <button class="principle" data-modal="p-svadharma" data-reveal style="--d:.05s"><span class="p-ic"><svg><use href="#i-wheel"/></svg></span><strong>Svadharma</strong><small>Know your strengths</small></button>
+            <button class="principle" data-modal="p-abhyasa" data-reveal style="--d:.12s"><span class="p-ic"><svg><use href="#i-network"/></svg></span><strong>Abhyasa</strong><small>Consistent practice</small></button>
+            <button class="principle" data-modal="p-ekagrata" data-reveal style="--d:.19s"><span class="p-ic"><svg><use href="#i-focus"/></svg></span><strong>Ekagrata</strong><small>Deep concentration</small></button>
+            <button class="principle" data-modal="p-guru" data-reveal style="--d:.26s"><span class="p-ic"><svg><use href="#i-guru"/></svg></span><strong>Guru–Shishya</strong><small>Guided learning</small></button>
+            <button class="principle" data-modal="p-niti" data-reveal style="--d:.33s"><span class="p-ic"><svg><use href="#i-scales"/></svg></span><strong>Niti &amp; Dharma</strong><small>Ethical training</small></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7–8 · RESEARCH + MEET YOUR GURU share one artwork (torn edge between them) -->
+    <div class="rg-wrap">
+    <div class="rg-bg" aria-hidden="true"></div>
+    <section class="bn bn-research" id="research">
+      <div class="bn-shade research-shade"></div>
+      <div class="bn-inner">
+        <div class="research-wrap">
+          <h2 class="title" data-reveal>Research and Existing Solutions</h2>
+          <p class="eyebrow" data-reveal style="--d:.08s">What already exists?</p>
+          <div class="research-grid">
+            <div class="research-cards">
+              <button class="r-card glass" data-modal="r-platforms" data-reveal style="--d:.1s">
+                <span class="r-ic"><svg><use href="#i-laptop"/></svg></span>
+                <span class="r-body"><strong>Personalized Learning Platforms</strong><small>Examples: Khan Academy, Duolingo</small></span>
+              </button>
+              <button class="r-card glass" data-modal="r-its" data-reveal style="--d:.2s">
+                <span class="r-ic"><svg><use href="#i-brain"/></svg></span>
+                <span class="r-body"><strong>Intelligent Tutoring Systems</strong><small>Model learner knowledge and provide targeted feedback</small></span>
+              </button>
+              <button class="r-card glass" data-modal="r-sim" data-reveal style="--d:.3s">
+                <span class="r-ic"><svg><use href="#i-vr"/></svg></span>
+                <span class="r-body"><strong>Simulation-based Training</strong><small>Interactive environments with performance feedback</small></span>
+              </button>
+            </div>
+            <div class="gap-col" data-reveal="right" style="--d:.25s">
+              <aside class="gap-card glass">
+                <h4>Research Gap</h4>
+                <ul>
+                  <li>Fragmented learning experience</li>
+                  <li>Limited explainability</li>
+                  <li>Weak story connection</li>
+                  <li>Insufficient meaningful adaptation</li>
+                  <li>Limited transparency</li>
+                </ul>
+              </aside>
+              <button class="btn btn-outline btn-sm" data-modal="research">Read the Research <svg class="ic"><use href="#i-arrow"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · MEET YOUR GURU -->
+    <section class="bn bn-guru" id="guru">
+      <div class="bn-shade guru-shade"></div>
+      <div class="bn-inner bn-right">
+        <div class="bn-copy">
+          <h2 class="title" data-reveal="right">Meet Your Guru</h2>
+          <p data-reveal style="--d:.1s">A guide, a mentor and a source of wisdom.</p>
+          <a href="gurukul.html#meet-guru" class="guru-quote" data-reveal style="--d:.2s"><svg class="q"><use href="#i-quote"/></svg>A true teacher does not give the same path to everyone, but helps each learner discover their own strength.</a>
+        </div>
+      </div>
+    </section>
+
+    </div>
+
+    <!-- 9 · TRAINING SIMULATOR -->
+    <section class="bn bn-sim" id="simulator">
+      <div class="bn-bg" data-parallax="0.08" style="background-image:url(assets/img/home/simulator.webp)"></div>
+      <div class="bn-shade left soft"></div>
+      <div class="bn-inner">
+        <div class="bn-copy sim-copy">
+          <h2 class="title" data-reveal>The Training Simulator</h2>
+          <p data-reveal style="--d:.1s">Experience a personalized learning journey inspired by the Dronacharya–Arjuna training.</p>
+          <div class="sim-steps">
+            <button class="sim-step glass" data-modal="step-assess" data-reveal style="--d:.05s"><svg><use href="#i-assess"/></svg><strong>1. Assessment</strong><small>Identify your skill level</small></button>
+            <button class="sim-step glass" data-modal="step-path" data-reveal style="--d:.12s"><svg><use href="#i-compass"/></svg><strong>2. Personalized Path</strong><small>Challenges based on your performance</small></button>
+            <button class="sim-step glass" data-modal="step-train" data-reveal style="--d:.19s"><svg><use href="#i-target"/></svg><strong>3. Interactive Training</strong><small>Archery and focus tasks</small></button>
+            <button class="sim-step glass" data-modal="step-feedback" data-reveal style="--d:.26s"><svg><use href="#i-feedback"/></svg><strong>4. Instant Feedback</strong><small>Know your mistakes</small></button>
+            <button class="sim-step glass" data-modal="step-track" data-reveal style="--d:.33s"><svg><use href="#i-podium"/></svg><strong>5. Progress Tracking</strong><small>See your growth</small></button>
+          </div>
+          <div class="center" data-reveal style="--d:.35s"><button class="btn btn-gold btn-sm" data-arena="assessment">Start Training Now <svg class="ic"><use href="#i-arrow"/></svg></button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 · LEARNING PATH -->
+    <section class="bn bn-path" id="path">
+      <div class="bn-bg" data-parallax="0.08" style="background-image:url(assets/img/home/path.webp)"></div>
+      <div class="bn-shade left soft"></div>
+      <div class="bn-inner">
+        <div class="bn-copy path-copy">
+          <h2 class="title" data-reveal>Your Personalized Learning Path</h2>
+          <p data-reveal style="--d:.1s">The next challenge adapts to your performance.</p>
+          <div class="path-track" data-reveal style="--d:.2s">
+            <div class="path-line"><div class="path-fill" id="pathFill"></div></div>
+            <button class="path-node" data-stage="0"><span class="pn-ic"><svg><use href="#i-clipboard"/></svg></span><span class="pn-label">Assessment</span></button>
+            <button class="path-node" data-stage="1"><span class="pn-ic"><svg><use href="#i-bow"/></svg></span><span class="pn-label">Beginner<br>Challenges</span></button>
+            <button class="path-node" data-stage="2"><span class="pn-ic"><svg><use href="#i-guide"/></svg></span><span class="pn-label">Guided Practice</span></button>
+            <button class="path-node" data-stage="3"><span class="pn-ic"><svg><use href="#i-mountain"/></svg></span><span class="pn-label">Advanced<br>Challenges</span></button>
+            <button class="path-node" data-stage="4"><span class="pn-ic"><svg><use href="#i-crown"/></svg></span><span class="pn-label">Mastery</span></button>
+          </div>
+          <div class="path-detail glass" id="pathDetail" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 · TRACK YOUR PROGRESS -->
+    <section class="bn bn-progress" id="progress">
+      <div class="bn-inner progress-grid">
+        <div class="prog-left">
+          <h2 class="title" data-reveal>Track Your Progress</h2>
+          <p data-reveal style="--d:.08s">Measure your improvement over time.</p>
+          <div class="stat-panel glass" data-reveal style="--d:.16s">
+            <div class="stat"><span class="stat-label">Accuracy</span><span class="stat-val" id="stAcc">85%</span></div>
+            <div class="stat"><span class="stat-label">Reaction Time</span><span class="stat-val" id="stReact">1.2s</span></div>
+            <div class="stat"><span class="stat-label">Challenges</span><span class="stat-val" id="stChal">12/20</span></div>
+            <div class="stat"><span class="stat-label">Level</span><span class="stat-val small" id="stLevel">Intermediate</span></div>
+          </div>
+          <div class="prog-note" data-reveal style="--d:.22s"><span id="progSource">Sample data. Finish a challenge to see your own results.</span> <button class="link-btn" id="resetProgress"><svg><use href="#i-reset"/></svg>Reset</button></div>
+        </div>
+        <div class="chart-card glass" data-reveal style="--d:.15s">
+          <h4>Performance over time</h4>
+          <svg id="lineChart" viewBox="0 0 420 210" role="img" aria-label="Performance over time chart"></svg>
+        </div>
+        <div class="radar-card" data-reveal="zoom" style="--d:.25s">
+          <svg id="radarChart" viewBox="0 0 320 280" role="img" aria-label="Skill radar chart"></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 · IMPACT -->
+    <section class="bn bn-impact" id="impact">
+      <div class="bn-bg" data-parallax="0.08" style="background-image:url(assets/img/home/impact.webp)"></div>
+      <div class="bn-shade impact-shade"></div>
+      <div class="bn-inner center">
+        <h2 class="title sm" data-reveal>A More Personalized Tomorrow</h2>
+        <p data-reveal style="--d:.1s">Inspired by ancient wisdom. Designed for modern learners.</p>
+        <div class="impact-row">
+          <button class="impact-item" data-modal="impact-effective" data-reveal style="--d:.1s"><span class="medal"><svg><use href="#i-spark"/></svg></span><span>More effective<br>learning</span></button>
+          <button class="impact-item" data-modal="impact-engagement" data-reveal style="--d:.2s"><span class="medal"><svg><use href="#i-heart"/></svg></span><span>Higher engagement</span></button>
+          <button class="impact-item" data-modal="impact-growth" data-reveal style="--d:.3s"><span class="medal"><svg><use href="#i-growth"/></svg></span><span>Measurable growth</span></button>
+          <button class="impact-item" data-modal="impact-ethical" data-reveal style="--d:.4s"><span class="medal"><svg><use href="#i-shield"/></svg></span><span>Ethical and responsible<br>use of technology</span></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer home-footer" id="about">
+    <div class="bn-inner footer-inner">
+      <div class="footer-brand">
+        <a href="#home" class="brand"><span class="brand-text"><span>Dronacharya's</span><span class="brand-sub">Training</span></span></a>
+        <p>Ancient wisdom. Individual learning. A brighter future.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#home">Home</a><a href="#story">Story</a><a href="#problem">Problem</a><a href="#research">Research</a><a href="#simulator">Simulation</a><a href="#impact">Impact</a><a href="#" data-modal="about">About</a>
+      </nav>
+      <div class="socials">
+        <button data-share aria-label="Share this page"><svg><use href="#i-share"/></svg></button>
+        <button data-modal="contact" aria-label="Contact"><svg><use href="#i-mail"/></svg></button>
+        <a href="parvas.html" aria-label="Mahabharata timeline"><svg><use href="#i-book"/></svg></a>
+      </div>
+    </div>
+    <p class="copyright">© <span id="year"></span> Dronacharya's Training. A learning project inspired by the Mahabharata.</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/arena.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

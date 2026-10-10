@@ -1,0 +1,226 @@
+/* =========================================================
+   Home page — full-bleed banner layout matching the mockup.
+   Each banner keeps close to the mockup's proportions on desktop
+   and the copy sits in the dark area painted into each image.
+   ========================================================= */
+
+/* ---------- brand (text-only wordmark, as in the mockup) ---------- */
+body[data-page="home"] .brand-text { font-size: 1.05rem; line-height: 1.02; letter-spacing: .03em; }
+body[data-page="home"] .brand-sub { font-size: 1.05rem; letter-spacing: .03em; color: var(--gold-2); }
+body[data-page="home"] .brand-sub::before, body[data-page="home"] .brand-sub::after { display: none; }
+body[data-page="home"] .nav-inner { width: 87vw; max-width: 1500px; }
+body[data-page="home"] .nav-links { gap: 24px; }
+body[data-page="home"] .nav-links a { font-size: .8rem; }
+
+/* ---------- banner primitives ---------- */
+.bn {
+  position: relative;
+  display: flex; align-items: center;
+  overflow: hidden; isolation: isolate;
+  padding: 30px 0;
+  background: var(--bg);
+}
+.bn + .bn { border-top: 1px solid rgba(217, 166, 71, .2); }
+.bn-bg {
+  position: absolute; inset: -6% 0; z-index: -2;
+  background-size: cover; background-repeat: no-repeat; background-position: center;
+  transform: translate3d(0, var(--py, 0px), 0) scale(var(--sc, 1.06));
+  transition: --sc 1.8s var(--ease), clip-path 1.4s var(--ease), filter 1.4s var(--ease);
+  clip-path: inset(0 0 0 0);
+  filter: brightness(.75) saturate(.9);
+  will-change: transform;
+}
+.bn.in-view > .bn-bg { --sc: 1; }
+.bn.seen > .bn-bg { filter: none; }
+.bn-shade { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.bn-shade.left { background: linear-gradient(90deg, rgba(6, 4, 2, .82) 0%, rgba(6, 4, 2, .55) 26%, rgba(6, 4, 2, 0) 48%); }
+.bn-shade.left.soft { background: linear-gradient(90deg, rgba(6, 4, 2, .6) 0%, rgba(6, 4, 2, .3) 28%, rgba(6, 4, 2, 0) 46%); }
+.bn-inner { position: relative; z-index: 2; width: 87vw; max-width: 1500px; margin: 0 auto; }
+.bn-right { display: flex; justify-content: flex-end; }
+.bn-copy { max-width: 470px; }
+.bn-copy.wide { max-width: 640px; }
+.bn .title { font-size: clamp(1.5rem, 2.35vw, 2.5rem); margin-bottom: 10px; }
+.bn .title.sm { font-size: clamp(1.3rem, 1.9vw, 2rem); }
+.bn p { font-size: clamp(.84rem, .92vw, .98rem); margin-bottom: 14px; line-height: 1.55; }
+.bn .eyebrow { margin: -6px 0 12px; }
+
+/* ---------- 1 · hero ---------- */
+.bn-hero { min-height: max(540px, 39.4vw); padding-top: calc(var(--nav-h) + 20px); }
+.bn-hero .bn-bg { inset: -4% 0; animation: heroZoom 14s var(--ease) both; --sc: 1; }
+.hero-glow { background:
+  radial-gradient(ellipse 30% 46% at 74% 50%, rgba(30, 14, 4, .6), transparent 75%),
+  linear-gradient(180deg, rgba(6, 4, 2, .6) 0%, transparent 18%, transparent 82%, rgba(6, 4, 2, .7) 100%); }
+.bn-hero .bn-right { padding-right: 3.5vw; }
+.center-copy { text-align: center; max-width: 600px; display: flex; flex-direction: column; align-items: center; }
+.bn-hero .hero-title { font-size: clamp(2.3rem, 3.6vw, 4.2rem); margin-bottom: 10px; background: linear-gradient(180deg, #fff2cc 0%, #f0c977 45%, #b47a2c 100%); -webkit-background-clip: text; background-clip: text; filter: drop-shadow(0 2px 2px rgba(40, 18, 4, .9)) drop-shadow(0 6px 22px rgba(0, 0, 0, .65)); }
+.bn-hero .hero-sub { font-size: clamp(1rem, 1.35vw, 1.4rem); }
+.bn-hero .hero-tag { margin-bottom: 24px; }
+.bn-hero .btn-row { justify-content: center; }
+.bn-hero .scroll-cue { bottom: 18px; }
+
+/* ---------- 2 · world ---------- */
+.bn-world { min-height: 26vw; }
+.bn-world .bn-bg { background-position: 70% 55%; }
+
+/* ---------- 3 · story ---------- */
+.bn-story { min-height: 23.2vw; }
+.bn-story .bn-bg { background-position: 0% 30%; }
+.bn-shade-story { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, transparent 27%, rgba(6, 4, 2, .55) 36%, rgba(6, 4, 2, .2) 60%, transparent 70%); }
+.story-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 3vw; align-items: center; padding-left: 31vw; width: 93.5vw; margin: 0 0 0 auto; padding-right: 6.5vw; max-width: none; }
+.story-row .bn-copy { max-width: 390px; }
+.bn-story .char-row { gap: .8vw; max-width: 470px; justify-self: end; width: 100%; }
+.bn-story .char-img { object-fit: cover; object-position: top; aspect-ratio: .5; height: auto; }
+.bn-story .char-card.featured .char-img { filter: none; }
+
+/* ---------- 4 · bird's-eye ---------- */
+.bn-birds { min-height: 22vw; }
+.bn-birds .bn-bg { background-position: 50% 40%; }
+.birds-row { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+.birds-row .bn-copy { max-width: 440px; }
+.bn-birds .quiz-card { width: 250px; margin-right: 0; padding: 14px 18px 14px; }
+.bn-birds .quiz-card h4 { margin-bottom: 6px; }
+.bn-birds .opt { padding: 3px 8px; font-size: .82rem; }
+.bn-birds .quiz-card .btn { margin-top: 10px; }
+
+/* ---------- 5 · problem ---------- */
+.bn-problem { min-height: 23.8vw; }
+.bn-problem .bn-bg { background-position: 0% 50%; }
+.bn-problem .bn-copy.wide { max-width: 47vw; }
+.bn-problem .mini-cards { gap: 10px; }
+.bn-problem .mini-card { padding: 12px 6px 10px; gap: 7px; }
+.bn-problem .mini-card svg { width: 26px; height: 26px; }
+
+/* ---------- 6 · principles ---------- */
+.bn-principles { min-height: 22.2vw; }
+.bn-principles .bn-bg { background-position: 100% 50%; }
+.bn-principles .bn-copy.wide { max-width: 54vw; }
+.bn-principles .principle-row { max-width: 640px; margin-top: 2px; }
+.bn-principles .p-ic { width: 44px; height: 44px; margin-bottom: 4px; }
+.bn-principles .p-ic svg { width: 26px; height: 26px; }
+.bn-principles .principle { padding: 6px 4px; }
+
+/* ---------- 7–8 · research + guru on one artwork ---------- */
+.rg-wrap { position: relative; isolation: isolate; border-top: 1px solid rgba(217, 166, 71, .2); }
+.rg-bg { position: absolute; inset: 0; z-index: -1; background: var(--bg) url(../assets/img/home/guru.webp) no-repeat 50% 100% / 100% auto; }
+.rg-wrap .bn { background: transparent; border-top: 0; }
+.research-shade { background: linear-gradient(180deg, rgba(8, 6, 4, .96) 0%, rgba(8, 6, 4, .8) 38%, rgba(8, 6, 4, .25) 72%, transparent 100%); }
+/* keep Drona's head (which rises above the torn edge) unshaded */
+.bn-research .bn-shade { -webkit-mask-image: radial-gradient(ellipse 13vw 9vw at 19vw 100%, transparent 55%, #000 100%); mask-image: radial-gradient(ellipse 13vw 9vw at 19vw 100%, transparent 55%, #000 100%); }
+.research-wrap .title { margin-bottom: 6px; }
+.bn-research { padding: 30px 0 3.2vw; }
+.bn-research .research-grid { grid-template-columns: 1fr 22vw; gap: 2vw; align-items: start; }
+.bn-research .research-cards { gap: 1.2vw; }
+.bn-research .r-card { padding: 14px 14px; }
+.bn-research .gap-card { padding: 14px 18px; }
+.bn-research .gap-card ul { gap: 4px; }
+.gap-col { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.gap-col .gap-card { width: 100%; }
+.bn-guru { min-height: 17.4vw; align-items: center; padding: 18px 0 1.6vw; }
+.guru-shade { background: radial-gradient(ellipse 30% 70% at 58% 55%, rgba(24, 10, 2, .62), transparent 80%); }
+.bn-guru .bn-right { justify-content: flex-start; padding-left: 40vw; }
+.bn-guru .bn-copy { max-width: 480px; }
+.bn-guru .title { margin-bottom: 4px; }
+.bn-guru p { margin-bottom: 10px; color: var(--cream); }
+.guru-quote { display: block; position: relative; padding-left: 34px; font-family: var(--quote); font-style: italic; font-size: clamp(1.05rem, 1.25vw, 1.3rem); line-height: 1.4; color: var(--cream); text-shadow: 0 2px 10px rgba(0, 0, 0, .85); transition: color .3s; }
+.guru-quote .q { position: absolute; left: 0; top: 2px; width: 24px; height: 24px; color: var(--gold); }
+.guru-quote:hover { color: var(--gold-2); }
+
+/* ---------- 9 · simulator ---------- */
+.bn-sim { min-height: 25vw; }
+.bn-sim .bn-bg { background-position: 70% 50%; }
+.sim-copy { max-width: 56vw; }
+.bn-sim .sim-steps { max-width: 760px; margin: 4px 0 14px; }
+.bn-sim .sim-step { padding: 12px 8px 10px; gap: 4px; }
+.bn-sim .sim-step svg { width: 28px; height: 28px; margin-bottom: 2px; }
+.bn-sim .center { max-width: 760px; }
+
+/* ---------- 10 · path ---------- */
+.bn-path { min-height: 19.5vw; }
+.bn-path .bn-bg { background-position: 70% 50%; }
+.path-copy { max-width: 58vw; }
+.bn-path .path-track { margin: 14px 0 0; max-width: 760px; }
+.bn-path .pn-ic { width: 52px; height: 52px; }
+.bn-path .path-line { top: 26px; }
+.bn-path .path-detail { display: none; max-width: 760px; margin-top: 16px; }
+.bn-path .path-detail.show { display: flex; animation: screenIn .5s var(--ease); }
+
+/* ---------- 11 · progress ---------- */
+.bn-progress { padding: 28px 0; background: linear-gradient(180deg, #0c0906, #0a0806); }
+.bn-progress .title { white-space: nowrap; font-size: clamp(1.3rem, 1.9vw, 2rem); }
+.bn-progress .stat-panel { padding: 12px 16px; }
+.bn-progress .prog-note { margin-top: 8px; }
+.bn-progress .chart-card { padding: 10px 14px 4px; }
+.bn-progress #lineChart { height: 160px; }
+.bn-progress .radar-card svg { height: 210px; }
+.bn-progress .progress-grid { grid-template-columns: 1.05fr 1fr .85fr; }
+
+/* ---------- 12 · impact ---------- */
+.bn-impact { min-height: 15vw; padding: 28px 0 24px; }
+.bn-impact .title { margin-bottom: 4px; }
+.bn-impact .medal { width: 46px; height: 46px; }
+.bn-impact .impact-item { gap: 8px; }
+.bn-impact .bn-bg { background-position: 50% 60%; }
+.impact-shade { background: radial-gradient(ellipse 40% 60% at 50% 45%, rgba(8, 6, 4, .55), transparent 80%), linear-gradient(180deg, rgba(8, 6, 4, .25), rgba(8, 6, 4, .55)); }
+.bn-impact p { margin-inline: auto; color: var(--cream); }
+.bn-impact .impact-row { margin-top: 10px; }
+
+/* ---------- footer ---------- */
+.home-footer .footer-inner { display: flex; }
+.home-footer .brand-sub::before, .home-footer .brand-sub::after { display: none; }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 1200px) {
+  .story-row { padding-left: 26vw; grid-template-columns: 1fr; gap: 20px; }
+  .bn-story .char-row { justify-self: start; max-width: 420px; }
+  .bn-research .research-grid { grid-template-columns: 1fr; }
+  .gap-col { align-items: flex-start; }
+  .bn-progress .progress-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 960px) {
+  body[data-page="home"] .nav-inner { width: calc(100% - 32px); }
+  .bn { min-height: 0 !important; padding: 72px 0; }
+  .bn-hero { min-height: 100svh !important; }
+  .bn-inner, .story-row { width: calc(100% - 40px); padding: 0; margin: 0 auto; }
+  .bn-shade.left, .bn-shade.left.soft { background: linear-gradient(0deg, rgba(6, 4, 2, .9), rgba(6, 4, 2, .55)); }
+  .bn-right, .bn-hero .bn-right, .bn-guru .bn-right { justify-content: flex-start; padding: 0; }
+  .bn-hero .bn-right { justify-content: center; }
+  .hero-glow { background: linear-gradient(180deg, rgba(6, 4, 2, .55), rgba(6, 4, 2, .45) 60%, var(--bg)); }
+  .bn-hero .bn-bg { background-position: 30% 50%; }
+  .bn-copy, .bn-copy.wide, .sim-copy, .path-copy, .bn-problem .bn-copy.wide, .bn-principles .bn-copy.wide { max-width: none; }
+  .bn-story .bn-bg { background-position: 20% 30%; }
+  .bn-story::after, .bn-problem::after, .bn-guru::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, rgba(6, 4, 2, .92), rgba(6, 4, 2, .5)); }
+  .birds-row { flex-direction: column; align-items: flex-start; }
+  .bn-birds .quiz-card { width: 100%; max-width: 360px; }
+  .rg-bg { background-size: cover; background-position: 15% 100%; }
+  .bn-research { padding: 72px 0 40px; }
+  .bn-guru { align-items: center; padding: 40px 0 72px; }
+  .bn-progress .progress-grid { grid-template-columns: 1fr; }
+  .bn-sim .bn-bg, .bn-path .bn-bg { background-position: 75% 50%; }
+}
+@media (max-width: 600px) {
+  .bn-story .char-row { grid-template-columns: repeat(4, 1fr); max-width: none; }
+  .bn-story .char-name { font-size: .68rem; }
+}
+
+/* ---------- fidelity pass: contrast on bright skies, gold path, story crop ---------- */
+.bn-hero .hero-title, .bn-guru .title {
+  background: linear-gradient(180deg, #f6dda0 0%, #d9a64f 50%, #8f5e1d 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(255, 236, 190, .35)) drop-shadow(0 2px 3px rgba(30, 12, 2, .95)) drop-shadow(0 8px 26px rgba(0, 0, 0, .55));
+}
+.hero-glow { background:
+  radial-gradient(ellipse 28% 42% at 74% 50%, rgba(28, 12, 2, .62), transparent 78%),
+  linear-gradient(180deg, rgba(6, 4, 2, .6) 0%, transparent 18%, transparent 82%, rgba(6, 4, 2, .7) 100%); }
+.bn-hero .hero-sub, .bn-hero .hero-tag { text-shadow: 0 1px 2px rgba(20, 8, 0, .9), 0 2px 14px rgba(0, 0, 0, .7); }
+.guru-shade { background: radial-gradient(ellipse 32% 80% at 60% 55%, rgba(20, 8, 2, .72), rgba(20, 8, 2, .25) 70%, transparent 90%); }
+.bn-story .bn-bg { background-position: 0% 6%; }
+body[data-page="home"] .brand-text, body[data-page="home"] .brand-sub { font-size: 1.15rem; }
+.bn-problem .mini-card { font-size: .8rem; }
+.bn-problem .mini-card svg { width: 30px; height: 30px; }
+/* every stage reads as a gold medallion, as in the mockup; progress still shows through fill */
+.bn-path .path-line { background: rgba(217, 166, 71, .45); }
+.bn-path .pn-ic { border-color: var(--gold); color: var(--gold-2); background: radial-gradient(circle, #2a1d0e, #100b06); box-shadow: 0 0 16px rgba(217, 166, 71, .2); }
+.bn-path .pn-label { color: var(--cream); }
+.bn-path .path-node.current .pn-ic { color: #1a1006; background: linear-gradient(180deg, #f3cf80, #c79338); }

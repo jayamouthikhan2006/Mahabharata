@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter the Gurukul — Dronacharya's Training</title>
+  <meta name="description" content="Step into Dronacharya's gurukul: explore the environment, meet your guru, learn the core values and begin your assessment.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Inter:wght@300;400;500;600&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="gurukul">
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand" aria-label="Dronacharya's Training — home">
+        <svg class="brand-mark"><use href="#i-bowmark"/></svg>
+        <span class="brand-text"><span>Dronacharya's</span><span class="brand-sub">Training</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="index.html#story">Story</a>
+        <a href="parvas.html">Timeline</a>
+        <a href="index.html#problem">Problem</a>
+        <a href="index.html#principles">Principles</a>
+        <a href="index.html#research">Research</a>
+        <a href="index.html#simulator">Simulation</a>
+        <a href="index.html#impact">Impact</a>
+        <a href="#" data-modal="about">About</a>
+        <a href="#welcome" class="btn btn-gold btn-sm nav-cta-mobile">Enter the Gurukul</a>
+      </nav>
+      <a href="#welcome" class="btn btn-gold btn-sm nav-cta active">Enter the Gurukul <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero hero-gate" id="top">
+      <div class="cover-frame" data-parallax="0.3">
+        <img src="assets/img/gurukul-gate.jpg" alt="The stone gateway of the gurukul at sunrise">
+        <div class="stone-text" aria-label="Vidya, Vinaya, Anushasan, Abhyas, Ekagrata">
+          <span>विद्या</span><span>विनय</span><span>अनुशासन</span><span>अभ्यास</span><span>एकाग्रता</span>
+        </div>
+      </div>
+      <div class="hero-shade center"></div>
+      <canvas class="embers" aria-hidden="true"></canvas>
+      <div class="container hero-content hero-center">
+        <h1 class="hero-title big" data-reveal="fade"><span class="line">Enter</span><span class="line">The Gurukul</span></h1>
+        <p class="hero-tag light" data-reveal style="--d:.35s">A place to learn. A place to grow. A place to become.</p>
+      </div>
+      <a href="#welcome" class="scroll-cue labeled" aria-label="Scroll to begin your journey"><svg><use href="#i-mouse"/></svg><span>Scroll to Begin Your Journey</span></a>
+    </section>
+
+    <!-- ============ WELCOME ============ -->
+    <section class="section welcome" id="welcome">
+      <div class="sec-bg" data-parallax="0.18" style="background-image:url(assets/img/guru-teaching.jpg);background-position:70% 40%"></div>
+      <div class="shade-left"></div>
+      <div class="container">
+        <div class="text-col wide">
+          <h2 class="title" data-reveal="left">Welcome to Dronacharya's Gurukul</h2>
+          <p data-reveal style="--d:.12s">Step into an ancient world where discipline, practice and purpose shaped extraordinary individuals. Explore the environment, meet your guru, understand the philosophy and begin your own training journey.</p>
+          <button class="btn btn-gold" id="beginOrientation" data-reveal style="--d:.22s">Begin Orientation <svg class="ic"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="feature-row">
+          <a href="#environment" class="feature" data-orient="0" data-reveal style="--d:.05s"><span class="f-ic"><svg><use href="#i-book"/></svg></span><strong>Discover the Gurukul</strong><small>Explore the environment and daily life</small></a>
+          <a href="#meet-guru" class="feature" data-orient="1" data-reveal style="--d:.15s"><span class="f-ic"><svg><use href="#i-people"/></svg></span><strong>Meet the Guru</strong><small>Learn from Dronacharya and his teachings</small></a>
+          <button class="feature" data-arena="archery" data-orient="2" data-reveal style="--d:.25s"><span class="f-ic"><svg><use href="#i-target"/></svg></span><strong>Experience Training</strong><small>Take your first challenge</small></button>
+          <a href="index.html#path" class="feature" data-orient="3" data-reveal style="--d:.35s"><span class="f-ic"><svg><use href="#i-chart"/></svg></span><strong>Begin Your Path</strong><small>A personalized journey based on your ability</small></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ENVIRONMENT ============ -->
+    <section class="section environment" id="environment">
+      <div class="env-bgs" data-parallax="0.15">
+        <div class="env-bg active" style="background-image:url(assets/img/archery-range.jpg);background-position:60% 50%"></div>
+      </div>
+      <div class="shade-left"></div>
+      <div class="container">
+        <div class="text-col">
+          <h2 class="title" data-reveal="left">The Gurukul<br>Environment</h2>
+          <p data-reveal style="--d:.1s" id="envDesc">A peaceful yet rigorous place where young warriors trained their mind, body and character. The gurukul was more than a school. It was a way of life.</p>
+          <p class="env-caption" id="envCaption" data-reveal style="--d:.15s">Archery Grounds</p>
+          <button class="btn btn-outline" id="exploreEnv" data-reveal style="--d:.2s">Explore the Environment <svg class="ic"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="carousel" data-reveal style="--d:.25s">
+          <button class="car-arrow" id="envPrev" aria-label="Previous scene"><svg><use href="#i-chev-left"/></svg></button>
+          <div class="thumbs" id="envThumbs"></div>
+          <button class="car-arrow" id="envNext" aria-label="Next scene"><svg><use href="#i-chev-right"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MEET YOUR GURU ============ -->
+    <section class="section meet-guru" id="meet-guru">
+      <div class="sec-bg" data-parallax="0.15" role="img" aria-label="Dronacharya at his writing desk by lamplight" style="background-image:url(assets/img/guru-study.webp);background-position:20% 40%"></div>
+      <div class="shade-right soft"></div>
+      <div class="container">
+        <div class="mg-text">
+          <h2 class="title" data-reveal>Meet Your Guru</h2>
+          <p data-reveal style="--d:.1s">Dronacharya, the legendary teacher of the Kuru princes, believed in discipline, observation and individual training. He saw the potential in each student and guided them based on their abilities, dedication and character.</p>
+          <div class="quote-card glass" data-reveal style="--d:.2s">
+            <blockquote id="quoteText"><svg class="q"><use href="#i-quote"/></svg><span>True learning begins when you understand your own strengths and limitations.</span></blockquote>
+            <div class="quote-foot"><cite>Dronacharya</cite><button class="quote-next" id="quoteNext" aria-label="Next teaching"><svg><use href="#i-arrow"/></svg></button></div>
+          </div>
+          <button class="btn btn-gold btn-sm" data-modal="story" data-reveal style="--d:.3s">Learn His Story <svg class="ic"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CORE VALUES ============ -->
+    <section class="section values" id="values">
+      <div class="sec-bg" data-parallax="0.18" style="background-image:url(assets/img/misty-path.webp);background-position:60% 60%"></div>
+      <div class="shade-left"></div>
+      <div class="container">
+        <h2 class="title" data-reveal>The Core Values</h2>
+        <p data-reveal style="--d:.1s">The principles that shaped the training at the gurukul and inspire our modern simulation.</p>
+        <div class="value-row">
+          <button class="value-card" data-modal="p-svadharma" data-reveal style="--d:.05s"><svg><use href="#i-lotus"/></svg><strong>Svadharma</strong><small>Know your strengths</small></button>
+          <button class="value-card" data-modal="p-abhyasa" data-reveal style="--d:.12s"><svg><use href="#i-target"/></svg><strong>Abhyasa</strong><small>Consistent practice</small></button>
+          <button class="value-card" data-modal="p-ekagrata" data-reveal style="--d:.19s"><svg><use href="#i-meditate"/></svg><strong>Ekagrata</strong><small>Deep concentration</small></button>
+          <button class="value-card" data-modal="p-guru" data-reveal style="--d:.26s"><svg><use href="#i-guru"/></svg><strong>Guru–Shishya</strong><small>Guided learning</small></button>
+          <button class="value-card" data-modal="p-niti" data-reveal style="--d:.33s"><svg><use href="#i-scales"/></svg><strong>Niti &amp; Dharma</strong><small>Ethical training</small></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ READY TO BEGIN ============ -->
+    <section class="section ready" id="ready">
+      <div class="sec-bg" data-parallax="0.08" style="background-image:url(assets/img/archer-aiming.webp)"></div>
+      <div class="shade-left soft"></div>
+      <div class="container">
+        <div class="text-col">
+          <h2 class="title" data-reveal="left">Ready to Begin?</h2>
+          <p data-reveal style="--d:.1s">Take the first step in your personalized training journey. You will be assessed, guided and challenged based on your performance.</p>
+          <a href="parvas.html" class="btn btn-gold" data-reveal style="--d:.2s">Start Your Assessment <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JOURNEY ============ -->
+    <section class="section journey" id="journey">
+      <div class="sec-bg" data-parallax="0.25" style="background-image:url(assets/img/sunset-overlook.webp);background-position:50% 45%"></div>
+      <div class="shade-impact"></div>
+      <div class="container center">
+        <h2 class="title sm" data-reveal>A Journey Towards<br>a Better You</h2>
+        <blockquote class="journey-quote" data-reveal style="--d:.15s"><svg class="q"><use href="#i-quote"/></svg>Discipline today shapes the person you become tomorrow.</blockquote>
+        <div class="ornament" data-reveal style="--d:.25s"><span></span><i></i><span></span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="brand"><svg class="brand-mark"><use href="#i-bowmark"/></svg><span class="brand-text"><span>Dronacharya's</span><span class="brand-sub">Training</span></span></a>
+        <p>Ancient wisdom. Individual learning. A brighter future.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="index.html">Home</a><a href="index.html#story">Story</a><a href="parvas.html">Timeline</a><a href="index.html#problem">Problem</a><a href="index.html#research">Research</a><a href="index.html#simulator">Simulation</a><a href="index.html#impact">Impact</a><a href="#" data-modal="about">About</a>
+      </nav>
+      <div class="socials">
+        <button data-share aria-label="Share this page"><svg><use href="#i-share"/></svg></button>
+        <button data-modal="contact" aria-label="Contact"><svg><use href="#i-mail"/></svg></button>
+        <a href="#" data-arena="assessment" aria-label="Start training"><svg><use href="#i-play"/></svg></a>
+      </div>
+    </div>
+    <p class="copyright">© <span id="year"></span> Dronacharya's Training. A learning project inspired by the Mahabharata.</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/icons.js"></script>
+  <script src="js/arena.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
