@@ -410,7 +410,7 @@
         clearInterval(reviewTimer);
         btn.disabled = false;
         count.textContent = '✓';
-        reviewBar.classList.add('ready');
+        reviewBar.classList.add('rb-ready');
         btn.focus({ preventScroll: true });
       }
     }, 1000);
@@ -431,7 +431,7 @@
 
   function endReview() {
     clearInterval(reviewTimer);
-    reviewBar.classList.remove('show', 'ready');
+    reviewBar.classList.remove('show', 'rb-ready');
     const el = document.getElementById(S.reviewId);
     if (el) { el.classList.remove('review'); const l = $('.tl-learn', el); l.hidden = true; l.innerHTML = ''; }
     S.reviewing = false;

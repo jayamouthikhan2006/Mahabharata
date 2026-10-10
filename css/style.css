@@ -564,8 +564,8 @@ blockquote .q { position: absolute; left: 0; top: 2px; width: 24px; height: 24px
 .value-card:hover { transform: translateY(-8px) rotateX(6deg); border-color: var(--gold-2); box-shadow: 0 20px 40px rgba(0, 0, 0, .6), 0 0 26px rgba(217, 166, 71, .2); }
 
 /* keep the archer scene close to its native 16:9 so the archer, bow and targets stay in frame */
-.ready { min-height: clamp(560px, 50vw, 900px); }
-.ready .sec-bg { inset: -5% 0; background-position: 58% 85%; }
+section.ready { min-height: clamp(560px, 50vw, 900px); }
+section.ready .sec-bg { inset: -5% 0; background-position: 58% 85%; }
 .journey { min-height: 600px; align-items: flex-start; padding-top: 80px; }
 .journey .shade-impact { background: radial-gradient(ellipse 34% 30% at 50% 24%, rgba(20, 10, 2, .55), transparent 80%), linear-gradient(180deg, rgba(8, 6, 4, .35) 0%, transparent 30%, transparent 70%, rgba(8, 6, 4, .75) 100%); }
 .journey .title { margin-bottom: 18px; }
@@ -764,9 +764,9 @@ blockquote .q { position: absolute; left: 0; top: 2px; width: 24px; height: 24px
   .shade-left, .shade-left.strong, .shade-right { background: linear-gradient(0deg, rgba(8, 6, 4, .9), rgba(8, 6, 4, .55)); }
   .shade-left.soft, .shade-right.soft { background: linear-gradient(0deg, rgba(8, 6, 4, .92), rgba(8, 6, 4, .62)); }
   .journey .shade-impact { background: linear-gradient(180deg, rgba(8, 6, 4, .55), rgba(8, 6, 4, .35) 55%, rgba(8, 6, 4, .8)); }
-  .ready { min-height: 780px; align-items: flex-start; }
-  .ready .sec-bg { inset: 0; background-position: 62% 100%; }
-  .ready .shade-left.soft { background: linear-gradient(180deg, rgba(8, 6, 4, .94) 0%, rgba(8, 6, 4, .7) 38%, rgba(8, 6, 4, 0) 62%); }
+  section.ready { min-height: 780px; align-items: flex-start; }
+  section.ready .sec-bg { inset: 0; background-position: 62% 100%; }
+  section.ready .shade-left.soft { background: linear-gradient(180deg, rgba(8, 6, 4, .94) 0%, rgba(8, 6, 4, .7) 38%, rgba(8, 6, 4, 0) 62%); }
   .guru-banner .container { justify-content: flex-start; }
   .mg-portrait { width: 100%; opacity: .35; }
   .meet-guru .container { justify-content: flex-start; }

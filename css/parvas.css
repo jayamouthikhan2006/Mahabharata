@@ -252,7 +252,7 @@
 .review-bar {
   position: fixed; left: 50%; bottom: 20px; z-index: 450; width: min(760px, calc(100% - 24px));
   display: flex; align-items: center; gap: 16px; padding: 12px 16px;
-  background: rgba(20, 13, 7, .96); border: 1px solid var(--gold); border-radius: 12px;
+  background: #140d07; border: 1px solid var(--gold); border-radius: 12px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, .6), 0 0 30px rgba(217, 166, 71, .2);
   transform: translate(-50%, 140%); opacity: 0; transition: transform .6s var(--ease), opacity .4s; pointer-events: none;
 }
@@ -262,14 +262,14 @@
 .rb-ring circle { fill: none; stroke: rgba(217, 166, 71, .2); stroke-width: 3; }
 .rb-ring .rb-arc { stroke: var(--gold-2); stroke-dasharray: 107; stroke-dashoffset: 0; transition: stroke-dashoffset 1s linear; }
 .rb-ring span { font-family: var(--serif); color: var(--gold-2); font-size: .95rem; }
-.review-bar.ready .rb-ring span { color: #1a1006; background: var(--gold-2); width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; }
+.review-bar.rb-ready .rb-ring span { color: #1a1006; background: var(--gold-2); width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; }
 .rb-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .rb-eyebrow { font-size: .64rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
 .rb-text strong { font-family: var(--serif); font-weight: 500; color: var(--cream); font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .rb-text small { font-size: .74rem; color: var(--muted); }
 .rb-actions { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
 .rb-actions .btn:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
-.review-bar.ready .btn { animation: pop2 .6s var(--ease); }
+.review-bar.rb-ready .btn { animation: pop2 .6s var(--ease); }
 
 /* ---------- reading progress + finale + gate ---------- */
 .rail-chip.read b { background: rgba(217, 166, 71, .22); color: var(--gold-2); border-color: var(--gold); }
