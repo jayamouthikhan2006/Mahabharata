@@ -355,18 +355,16 @@
         <button class="btn btn-gold btn-sm" data-q="next">${last ? 'See My Results' : 'Next Question'} <svg class="ic"><use href="#i-arrow"/></svg></button>`;
       $('[data-q="next"]', fb).focus({ preventScroll: true });
     } else {
+      // a mistake stops the test right here and goes straight to the moment in the timeline
       btns[i].classList.add('wrong');
       r.wrong++;
       S.streak = 0;
+      S.lastWrong = choice.o;
       fb.className = 'q-feedback bad show';
       fb.innerHTML = `
-        <div class="fb-head"><strong>Not quite.</strong></div>
-        <p>The answer lies in <b>${ev.t}</b>, event ${q.e} of the ${p.name}. Dronacharya is sending you back to the timeline to learn this moment again.</p>
-        <button class="btn btn-gold btn-sm" data-q="review">Take Me There Now <svg class="ic"><use href="#i-arrow"/></svg></button>
-        <div class="fb-auto"><i></i></div>`;
-      $('[data-q="review"]', fb).focus({ preventScroll: true });
-      requestAnimationFrame(() => { const bar = $('.fb-auto i', fb); if (bar) bar.style.transform = 'scaleX(1)'; });
-      autoTimer = setTimeout(goReview, 3200);
+        <div class="fb-head"><strong>Wrong answer. The test stops here.</strong></div>
+        <p>Taking you to <b>${ev.t}</b> (${p.name}, event ${q.e}) to learn it…</p>`;
+      autoTimer = setTimeout(goReview, 700);
     }
     renderHud();
   }
@@ -390,12 +388,12 @@
     const el = document.getElementById(id);
     el.classList.add('review');
     const learn = $('.tl-learn', el);
-    learn.innerHTML = `<b>Remember this</b>${q.learn}`;
+    learn.innerHTML = `<b>Where you went wrong</b><span class="tl-yours">Your answer: <s>${esc(S.lastWrong || '')}</s></span>${q.learn}`;
     learn.hidden = false;
     $('#rbTitle').textContent = p.events[q.e - 1].t;
-    $('#rbSub').textContent = `Parva ${ROMAN[p.n]} · ${p.name}. Read the highlighted event, then return to your question.`;
+    $('#rbSub').textContent = `You answered "${S.lastWrong}". Read this event in the ${p.name}, then return to the same question.`;
     reviewBar.classList.add('show');
-    setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 120);
+    setTimeout(() => scrollToLearn(el), 120);
 
     // short reading period before the learner can resume
     const btn = $('#rbResume'), count = $('#rbCount'), arc = $('.rb-arc', reviewBar);
@@ -418,9 +416,17 @@
     }, 1000);
   }
 
+  // land with the "Where you went wrong" box fully visible above the learning-mode bar
+  function scrollToLearn(el) {
+    const box = $('.tl-learn', el) || el;
+    const r = box.getBoundingClientRect();
+    const barSpace = (reviewBar.offsetHeight || 100) + 40;
+    const want = Math.max(150, window.innerHeight - barSpace - r.height);
+    window.scrollTo({ top: window.scrollY + r.top - want, behavior: 'smooth' });
+  }
   function locateReview() {
     const el = S && S.reviewId && document.getElementById(S.reviewId);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (el) scrollToLearn(el);
   }
 
   function endReview() {
@@ -453,6 +459,7 @@
     if (isBest) { rec.best = S.score; rec.bestRank = rank.name; rec.bestPct = pct; }
     rec.last = { score: S.score, pct, date: Date.now() };
     saveRecord(rec);
+    if (typeof Store !== 'undefined') Store.setLevel(pct >= 75 ? 2 : pct >= 50 ? 1 : 0);
 
     const phaseRows = PHASES.map((ph) => {
       const idxs = S.qs.map((q, i) => i).filter((i) => S.qs[i].p >= ph.range[0] && S.qs[i].p <= ph.range[1]);
@@ -601,4 +608,9 @@
     if (S && S.finished) S = null;
     startQuiz();
   });
+  // arriving from a Skill Assessment button anywhere on the site: go straight to the questions
+  if (new URLSearchParams(location.search).get('assess') === '1') {
+    history.replaceState(null, '', location.pathname + location.hash);
+    setTimeout(startQuiz, 400);
+  }
 })();

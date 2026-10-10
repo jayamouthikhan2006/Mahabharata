@@ -289,6 +289,9 @@
 .assess-read b { font-weight: 500; font-size: 1.15rem; color: var(--gold-2); }
 .pv-gate .modal-actions { align-items: center; gap: 18px; }
 
+.tl-yours { display: block; margin: 2px 0 8px; padding: 6px 10px; border-radius: 6px; background: rgba(196, 97, 74, .16); border: 1px solid rgba(196, 97, 74, .45); color: #f0a892; font-size: .84rem; }
+.tl-yours s { text-decoration-color: rgba(240, 168, 146, .6); }
+
 /* ---------- responsive ---------- */
 @media (max-width: 960px) {
   .phase-cards { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }

@@ -27,7 +27,9 @@ const Store = (() => {
     save();
   }
   function reset() { mem = fresh(); save(); }
-  return { load, record, reset, LEVELS };
+  // set by the Parva skill assessment
+  function setLevel(level) { load(); mem.level = level; mem.assessed = true; save(); }
+  return { load, record, reset, setLevel, LEVELS };
 })();
 
 const Arena = (() => {
@@ -165,7 +167,7 @@ const Arena = (() => {
     const lastType = st.sessions.length ? st.sessions[st.sessions.length - 1].type : null;
     const rec = recommend || (!st.assessed ? 'assessment' : lastType === 'archery' ? 'focus' : 'archery');
     const msg = !st.assessed
-      ? 'Before I can guide you, I must see how you shoot. Take the <b>assessment</b>: five arrows, no pressure. Your path begins from what you show me.'
+      ? 'Before I can guide you, I must know what you have learned. Take the <b>skill assessment</b>: questions from the Parvas of the Mahabharata. Make a mistake and I will take you straight back to that moment in the story.'
       : `Welcome back. You train at the <b>${LEVELS[st.level]}</b> level. Each challenge adapts to how you perform. Excel and the target grows harder; struggle and I will slow the pace.`;
     $('[data-screen="intro"]').innerHTML = `
       <div class="intro-wrap">
@@ -174,7 +176,7 @@ const Arena = (() => {
         <div class="mode-cards">
           <button class="mode-card glass ${rec === 'assessment' ? 'recommended' : ''}" data-start="assessment">
             <svg><use href="#i-assess"/></svg><strong>Skill Assessment</strong>
-            <small>Five arrows at a slow-moving target. Your accuracy, reaction time and steadiness set your starting level.</small>
+            <small>Questions from the 18 Parvas. One wrong answer stops the test and takes you to that moment in the timeline to learn it, then you continue. Your score sets your starting level.</small>
             <span class="go">${st.assessed ? 'Retake assessment' : 'Begin assessment'} <svg><use href="#i-arrow"/></svg></span>
           </button>
           <button class="mode-card glass ${rec === 'archery' ? 'recommended' : ''}" data-start="archery">
@@ -200,6 +202,7 @@ const Arena = (() => {
   }
 
   function startChallenge(kind) {
+    if (kind === 'assessment') { window.location.href = 'parvas.html?assess=1'; return; }
     const st = Store.load();
     const assessment = kind === 'assessment';
     const level = assessment ? 0 : st.level;
@@ -708,6 +711,7 @@ const Arena = (() => {
 
   /* ---------------- public ---------------- */
   function open(mode) {
+    if (mode === 'assessment') { window.location.href = 'parvas.html?assess=1'; return; }
     build();
     isOpen = true;
     root.classList.add('open');
