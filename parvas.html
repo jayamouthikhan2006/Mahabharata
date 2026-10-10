@@ -47,10 +47,10 @@
       <div class="container hero-content hero-center">
         <p class="eyebrow pv-eyebrow" data-reveal>The Mahabharata</p>
         <h1 class="hero-title big" data-reveal="fade"><span class="line">The Eighteen</span><span class="line">Parvas</span></h1>
-        <p class="hero-tag light" data-reveal style="--d:.3s">From Bhishma's vow to Yudhishthira's ascent. Walk the timeline, then test what you remember.</p>
+        <p class="hero-tag light" data-reveal style="--d:.3s">From Bhishma's vow to Yudhishthira's ascent. Walk all eighteen Parvas first, then test what you remember.</p>
         <div class="btn-row pv-hero-btns" data-reveal style="--d:.45s">
-          <button class="btn btn-gold" data-quiz="start">Start Assessment <svg class="ic"><use href="#i-arrow"/></svg></button>
-          <a href="#phases" class="btn btn-outline">Explore the Timeline</a>
+          <a href="#phase-1" class="btn btn-gold">Begin with the Parvas <svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="#assessment" class="btn btn-outline">How the Assessment Works</a>
         </div>
         <div class="pv-stats" data-reveal style="--d:.6s">
           <div><strong>18</strong><span>Parvas</span></div>
@@ -101,7 +101,7 @@
       <div class="container pv-assess-grid">
         <div>
           <h2 class="title" data-reveal="left">The Parva Assessment</h2>
-          <p data-reveal style="--d:.1s">Eighteen questions, one from each Parva, in the order of the story. Answer correctly on the first try for full marks. Get one wrong and Dronacharya sends you back to the exact moment in the timeline to learn it again. Then you return to the same question.</p>
+          <p data-reveal style="--d:.1s">The questions come after the story. Once you have walked all eighteen Parvas, answer eighteen questions, one from each Parva, in the order of the story. Answer correctly on the first try for full marks. Get one wrong and Dronacharya sends you back to the exact moment in the timeline to learn it again. Then you return to the same question.</p>
           <ul class="score-rules" data-reveal style="--d:.2s">
             <li><b>10</b> points: correct on the first try</li>
             <li><b>5</b> points: correct after one review</li>
@@ -111,6 +111,7 @@
         </div>
         <div class="assess-card glass" data-reveal="right" style="--d:.2s">
           <p class="eyebrow">Your record</p>
+          <div class="assess-read"><span>Parvas read</span><b id="readCount">0/18</b></div>
           <div class="assess-best">
             <div><span>Best score</span><strong id="bestScore">—</strong></div>
             <div><span>Best rank</span><strong id="bestRank">—</strong></div>

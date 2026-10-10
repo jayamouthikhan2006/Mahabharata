@@ -90,6 +90,21 @@
       </div>
     </section>`;
   });
+  tl += `
+    <section class="section tl-finale" id="finale">
+      <div class="sec-bg" data-parallax="0.2" style="background-image:url(assets/img/home/impact.webp);background-position:40% 60%"></div>
+      <div class="shade-impact"></div>
+      <div class="container center">
+        <p class="eyebrow" data-reveal>The story is complete</p>
+        <h2 class="title" data-reveal style="--d:.1s">You Have Walked<br>the Eighteen Parvas</h2>
+        <p class="finale-text" data-reveal style="--d:.2s">From Bhishma's vow to Yudhishthira's ascent. Now Dronacharya will test what you remember. Get a question wrong and he will bring you back to the exact moment to learn it again.</p>
+        <div class="finale-read" data-reveal style="--d:.25s"><div class="fr-bar"><i id="finaleBar"></i></div><span id="finaleRead">0 of 18 Parvas read</span></div>
+        <div class="btn-row finale-btns" data-reveal style="--d:.3s">
+          <button class="btn btn-gold" data-quiz="go">Begin the Questions <svg class="ic"><use href="#i-arrow"/></svg></button>
+          <a href="#reference" class="btn btn-outline">Quick Reference First</a>
+        </div>
+      </div>
+    </section>`;
   $('#timeline').innerHTML = tl;
 
   $('#refBody').innerHTML = PARVAS.map((p) => `
@@ -117,6 +132,27 @@
   const timeline = $('#timeline');
   let currentParva = 0, ticking = false;
 
+  /* ---------- reading progress: the Parvas come before the questions ---------- */
+  const READ_KEY = 'parva_read_v1';
+  let cardReady = false; // the assessment card is wired up further down
+  const read = new Set((() => { try { return JSON.parse(localStorage.getItem(READ_KEY)) || []; } catch (e) { return []; } })());
+  const firstUnread = () => PARVAS.find((p) => !read.has(p.n));
+  function renderRead() {
+    $$('.rail-chip', railTrack).forEach((c) => c.classList.toggle('read', read.has(+c.dataset.n)));
+    const n = read.size;
+    $('#finaleRead').textContent = n === 18 ? 'All 18 Parvas read' : `${n} of 18 Parvas read`;
+    $('#finaleBar').style.transform = `scaleX(${n / 18})`;
+    const rc = $('#readCount');
+    if (rc) rc.textContent = `${n}/18`;
+    if (cardReady) updateAssessCard();
+  }
+  function markRead(n) {
+    if (read.has(n)) return;
+    read.add(n);
+    try { localStorage.setItem(READ_KEY, JSON.stringify([...read])); } catch (e) { /* storage unavailable */ }
+    renderRead();
+  }
+
   function frame() {
     ticking = false;
     const vh = window.innerHeight;
@@ -125,6 +161,8 @@
       const r = wrap.getBoundingClientRect();
       const prog = clamp((mark - r.top) / r.height, 0, 1);
       fill.style.transform = `scaleY(${prog})`;
+      // count it only when the end of the Parva actually scrolls past on screen (not when jumping over it)
+      if (prog >= 0.98 && r.bottom > -120) markRead(+wrap.closest('.parva').dataset.n);
       if (r.bottom < -200 || r.top > vh + 200) return;
       const reach = prog * r.height;
       let active = null;
@@ -152,6 +190,7 @@
   const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
   window.addEventListener('scroll', request, { passive: true });
   window.addEventListener('resize', request);
+  renderRead();
   frame();
 
   /* =========================================================
@@ -505,18 +544,61 @@
     const btn = $('#assessStartBtn'), note = $('#assessNote');
     if (S && S.reviewing) { btn.firstChild.textContent = 'Return to Review '; note.textContent = 'You are in learning mode. Read the highlighted event, then resume your question.'; }
     else if (S && !S.finished) { btn.firstChild.textContent = 'Resume Assessment '; note.textContent = `In progress: question ${S.idx + 1} of ${S.qs.length}, score ${S.score}.`; }
-    else { btn.firstChild.textContent = rec.attempts ? 'Retake Assessment ' : 'Start Assessment '; note.textContent = 'Takes about 5 to 8 minutes. Your best score is saved on this device.'; }
+    else if (!rec.attempts && read.size < 18) { btn.firstChild.textContent = read.size ? 'Continue the Parvas ' : 'Begin with the Parvas '; note.textContent = 'Walk the timeline first. The questions open once you have read all 18 Parvas.'; }
+    else { btn.firstChild.textContent = rec.attempts ? 'Retake Assessment ' : 'Start the Questions '; note.textContent = 'Takes about 5 to 8 minutes. Your best score is saved on this device.'; }
   }
+  cardReady = true;
   updateAssessCard();
 
+  /* ---------- gate: if the Parvas are not finished, guide the learner back to them ---------- */
+  let gate = null;
+  function closeGate() { if (gate) { gate.classList.remove('open'); document.body.classList.remove('locked'); } }
+  function openGate() {
+    const next = firstUnread();
+    if (!gate) {
+      gate = document.createElement('div');
+      gate.className = 'modal pv-gate';
+      gate.setAttribute('role', 'dialog');
+      gate.setAttribute('aria-modal', 'true');
+      gate.setAttribute('aria-label', 'Begin with the Parvas');
+      document.body.appendChild(gate);
+      gate.addEventListener('click', (e) => {
+        const a = e.target.closest('[data-gate]');
+        if (!a) return;
+        const act = a.dataset.gate;
+        closeGate();
+        if (act === 'continue') { const nx = firstUnread(); setTimeout(() => goTo(nx ? `parva-${nx.n}` : 'finale'), 150); }
+        else if (act === 'anyway') { if (S && S.finished) S = null; startQuiz(); }
+      });
+    }
+    gate.innerHTML = `<div class="modal-backdrop" data-gate="close"></div>
+      <div class="modal-box"><button class="modal-close" data-gate="close" aria-label="Close"><svg><use href="#i-close"/></svg></button>
+        <div class="modal-media" style="background-image:url(${IMG + next.cover});background-position:center"></div>
+        <div class="modal-content">
+          <div class="modal-eyebrow">The story comes first</div>
+          <h3>Begin with the Parvas</h3><div style="height:12px"></div>
+          <p>Dronacharya's questions follow the story, so walk the timeline first. You have read <b>${read.size} of 18</b> Parvas. Each one is marked as read once you scroll through all of its events.</p>
+          <div class="gate-bar"><i style="transform:scaleX(${read.size / 18})"></i></div>
+          <div class="modal-actions">
+            <button class="btn btn-gold btn-sm" data-gate="continue">${read.size ? 'Continue with' : 'Begin with'} Parva ${ROMAN[next.n]}: ${next.name.replace(' Parva', '')} <svg class="ic"><use href="#i-arrow"/></svg></button>
+            <button class="link-btn" data-gate="anyway">Start the questions anyway</button>
+          </div>
+        </div>
+      </div>`;
+    gate.classList.add('open');
+    document.body.classList.add('locked');
+    setTimeout(() => { const b = $('[data-gate="continue"]', gate); if (b) b.focus({ preventScroll: true }); }, 50);
+  }
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeGate(); });
+
   document.addEventListener('click', (e) => {
-    const s = e.target.closest('[data-quiz="start"]');
+    const s = e.target.closest('[data-quiz="start"], [data-quiz="go"]');
     if (!s) return;
     e.preventDefault();
+    const inProgress = S && !S.finished;
+    // "go" is the button at the end of the timeline; everything else checks the reading progress first
+    if (s.dataset.quiz === 'start' && !inProgress && !loadRecord().attempts && read.size < 18) { openGate(); return; }
     if (S && S.finished) S = null;
     startQuiz();
   });
-
-  // arriving from "Start Your Assessment" elsewhere on the site
-  if (new URLSearchParams(location.search).get('start') === '1') setTimeout(startQuiz, 600);
 })();

@@ -271,6 +271,24 @@
 .rb-actions .btn:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
 .review-bar.ready .btn { animation: pop2 .6s var(--ease); }
 
+/* ---------- reading progress + finale + gate ---------- */
+.rail-chip.read b { background: rgba(217, 166, 71, .22); color: var(--gold-2); border-color: var(--gold); }
+.rail-chip.read b::after { content: '✓'; position: absolute; transform: translate(9px, -9px); font-size: .55rem; width: 13px; height: 13px; border-radius: 50%; display: grid; place-items: center; background: var(--gold-2); color: #1a1006; }
+.rail-chip b { position: relative; }
+.rail-chip.active.read b::after { background: #fff3d2; }
+.tl-finale { min-height: 80vh; text-align: center; }
+.tl-finale .title { font-size: clamp(2rem, 4.4vw, 3.4rem); }
+.tl-finale .eyebrow { margin: 0 auto 10px; }
+.finale-text { margin: 0 auto 22px; color: var(--cream); font-size: 1.02rem; }
+.finale-read { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 24px; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-2); }
+.fr-bar, .gate-bar { width: min(320px, 80vw); height: 4px; border-radius: 4px; background: rgba(217, 166, 71, .2); overflow: hidden; }
+.fr-bar i, .gate-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--gold-3), var(--gold-2)); transform-origin: 0 50%; transform: scaleX(0); transition: transform 1s var(--ease); }
+.gate-bar { width: 100%; margin: 4px 0 20px; }
+.finale-btns { justify-content: center; }
+.assess-read { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0 14px; margin-bottom: 14px; border-bottom: 1px solid rgba(217, 166, 71, .14); font-size: .8rem; color: var(--muted); }
+.assess-read b { font-weight: 500; font-size: 1.15rem; color: var(--gold-2); }
+.pv-gate .modal-actions { align-items: center; gap: 18px; }
+
 /* ---------- responsive ---------- */
 @media (max-width: 960px) {
   .phase-cards { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
